@@ -29,6 +29,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bpTabControl = new System.Windows.Forms.TabControl();
@@ -37,23 +39,25 @@
             this.bpBtnNext = new System.Windows.Forms.Button();
             this.bpBtnWithdrawAccept = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.bpTxtWithdrawValue = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bpGroupBoxDenomination = new System.Windows.Forms.GroupBox();
             this.bpBtnAcceptDenominationCount = new System.Windows.Forms.Button();
             this.bpRadioBtnAlloc = new System.Windows.Forms.RadioButton();
             this.bpRadioBtnRandom = new System.Windows.Forms.RadioButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bpDgvAvailableDenominations = new System.Windows.Forms.DataGridView();
             this.no_of_denominations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.denomination_value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.bpComboBoxDenomination = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bpTabPageVending = new System.Windows.Forms.TabPage();
+            this.bpErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.bpTabControl.SuspendLayout();
             this.bpTabPageBank.SuspendLayout();
             this.bpGroupBoxDenomination.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bpDgvAvailableDenominations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bpErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // bpTabControl
@@ -84,10 +88,10 @@
             this.bpTabPageBank.Controls.Add(this.bpBtnNext);
             this.bpTabPageBank.Controls.Add(this.bpBtnWithdrawAccept);
             this.bpTabPageBank.Controls.Add(this.label3);
-            this.bpTabPageBank.Controls.Add(this.textBox3);
+            this.bpTabPageBank.Controls.Add(this.bpTxtWithdrawValue);
             this.bpTabPageBank.Controls.Add(this.label2);
             this.bpTabPageBank.Controls.Add(this.bpGroupBoxDenomination);
-            this.bpTabPageBank.Controls.Add(this.dataGridView1);
+            this.bpTabPageBank.Controls.Add(this.bpDgvAvailableDenominations);
             this.bpTabPageBank.Controls.Add(this.label1);
             this.bpTabPageBank.Controls.Add(this.bpComboBoxDenomination);
             this.bpTabPageBank.Controls.Add(this.textBox1);
@@ -101,6 +105,7 @@
             // 
             // bpBtnNext
             // 
+            this.bpBtnNext.Enabled = false;
             this.bpBtnNext.ForeColor = System.Drawing.Color.Black;
             this.bpBtnNext.Location = new System.Drawing.Point(684, 181);
             this.bpBtnNext.Name = "bpBtnNext";
@@ -111,6 +116,7 @@
             // 
             // bpBtnWithdrawAccept
             // 
+            this.bpBtnWithdrawAccept.Enabled = false;
             this.bpBtnWithdrawAccept.ForeColor = System.Drawing.Color.Black;
             this.bpBtnWithdrawAccept.Location = new System.Drawing.Point(683, 152);
             this.bpBtnWithdrawAccept.Name = "bpBtnWithdrawAccept";
@@ -118,6 +124,7 @@
             this.bpBtnWithdrawAccept.TabIndex = 10;
             this.bpBtnWithdrawAccept.Text = "Wypłać";
             this.bpBtnWithdrawAccept.UseVisualStyleBackColor = true;
+            this.bpBtnWithdrawAccept.Click += new System.EventHandler(this.bpBtnWithdrawAccept_Click);
             // 
             // label3
             // 
@@ -128,12 +135,13 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Pojemnkik walutowy Bankomatu";
             // 
-            // textBox3
+            // bpTxtWithdrawValue
             // 
-            this.textBox3.Location = new System.Drawing.Point(683, 126);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(177, 20);
-            this.textBox3.TabIndex = 8;
+            this.bpTxtWithdrawValue.Enabled = false;
+            this.bpTxtWithdrawValue.Location = new System.Drawing.Point(683, 126);
+            this.bpTxtWithdrawValue.Name = "bpTxtWithdrawValue";
+            this.bpTxtWithdrawValue.Size = new System.Drawing.Size(177, 20);
+            this.bpTxtWithdrawValue.TabIndex = 8;
             // 
             // label2
             // 
@@ -158,6 +166,7 @@
             // 
             // bpBtnAcceptDenominationCount
             // 
+            this.bpBtnAcceptDenominationCount.Enabled = false;
             this.bpBtnAcceptDenominationCount.ForeColor = System.Drawing.Color.Black;
             this.bpBtnAcceptDenominationCount.Location = new System.Drawing.Point(226, 19);
             this.bpBtnAcceptDenominationCount.Name = "bpBtnAcceptDenominationCount";
@@ -165,9 +174,11 @@
             this.bpBtnAcceptDenominationCount.TabIndex = 2;
             this.bpBtnAcceptDenominationCount.Text = "Akceptuj";
             this.bpBtnAcceptDenominationCount.UseVisualStyleBackColor = true;
+            this.bpBtnAcceptDenominationCount.Click += new System.EventHandler(this.bpBtnAcceptDenominationCount_Click);
             // 
             // bpRadioBtnAlloc
             // 
+            this.bpRadioBtnAlloc.Enabled = false;
             this.bpRadioBtnAlloc.Location = new System.Drawing.Point(116, 19);
             this.bpRadioBtnAlloc.Name = "bpRadioBtnAlloc";
             this.bpRadioBtnAlloc.Size = new System.Drawing.Size(104, 24);
@@ -178,6 +189,7 @@
             // 
             // bpRadioBtnRandom
             // 
+            this.bpRadioBtnRandom.Enabled = false;
             this.bpRadioBtnRandom.Location = new System.Drawing.Point(27, 19);
             this.bpRadioBtnRandom.Name = "bpRadioBtnRandom";
             this.bpRadioBtnRandom.Size = new System.Drawing.Size(83, 24);
@@ -186,14 +198,17 @@
             this.bpRadioBtnRandom.Text = "Losowo";
             this.bpRadioBtnRandom.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // bpDgvAvailableDenominations
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.no_of_denominations, this.denomination_value });
-            this.dataGridView1.Location = new System.Drawing.Point(32, 178);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(184, 156);
-            this.dataGridView1.TabIndex = 4;
+            this.bpDgvAvailableDenominations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bpDgvAvailableDenominations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.no_of_denominations, this.denomination_value });
+            this.bpDgvAvailableDenominations.Location = new System.Drawing.Point(32, 178);
+            this.bpDgvAvailableDenominations.Name = "bpDgvAvailableDenominations";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.bpDgvAvailableDenominations.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.bpDgvAvailableDenominations.Size = new System.Drawing.Size(184, 156);
+            this.bpDgvAvailableDenominations.TabIndex = 4;
             // 
             // no_of_denominations
             // 
@@ -232,9 +247,11 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.DimGray;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Location = new System.Drawing.Point(250, 38);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(393, 20);
+            this.textBox1.Size = new System.Drawing.Size(393, 13);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "SYMULATOR BANKOMATU\r\n(umożliwia dokonywanie wypłat w różnych walutach)";
             // 
@@ -249,6 +266,10 @@
             this.bpTabPageVending.TabIndex = 1;
             this.bpTabPageVending.Text = "Automat";
             // 
+            // bpErrorProvider
+            // 
+            this.bpErrorProvider.ContainerControl = this;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,14 +282,17 @@
             this.bpTabPageBank.ResumeLayout(false);
             this.bpTabPageBank.PerformLayout();
             this.bpGroupBoxDenomination.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bpDgvAvailableDenominations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bpErrorProvider)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.ErrorProvider bpErrorProvider;
 
         private System.Windows.Forms.Button bpBtnNext;
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox bpTxtWithdrawValue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button bpBtnWithdrawAccept;
 
@@ -283,7 +307,7 @@
 
         private System.Windows.Forms.DataGridViewTextBoxColumn no_of_denominations;
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView bpDgvAvailableDenominations;
 
         private System.Windows.Forms.ComboBox bpComboBoxDenomination;
         private System.Windows.Forms.Label label1;
